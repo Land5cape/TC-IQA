@@ -13,5 +13,3 @@ python -m pip install -r requirements.txt
 ```powershell
 python scripts/train_conditioned.py
 ```
-
-当前默认：MIQD、无参考、冻结 ConvNeXt-Tiny、四分支跨层融合、Huber-only。
