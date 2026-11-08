@@ -1,0 +1,8 @@
+torch
+torchvision
+timm>=1.0.15,<2
+pandas
+numpy
+Pillow
+scipy
+PyYAML

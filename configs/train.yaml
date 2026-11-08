@@ -1,0 +1,44 @@
+# 修改路径后运行 python scripts/train_conditioned.py
+dataset_type: miqd
+dataset_root: ../datasets/miqd-2.5m
+output_dir: outputs/tc_iqa_miqd
+device: cuda:0
+backbone: convnext_tiny
+pretrained: true
+reference_mode: nr
+image_size: 224
+scale_fusion: attention_sum
+cross_layer_dim: 64
+cross_layer_grid: 28
+cross_layer_heads: 4
+cross_layer_fusion: add
+batch_size: 32
+epochs: 20
+seed: 42
+split_ratios: [0.8, 0.2]
+num_workers: 8
+amp: true
+unfreeze_epoch: 999
+patience: 2
+early_stopping_start_epoch: 4
+selection_start_epoch: 2
+head_learning_rate: 0.0001
+backbone_learning_rate: 0.000001
+minimum_learning_rate: 0.0000001
+weight_decay: 0.001
+sigma_min: 0.05
+miqd_train_pairs_per_epoch: 300000
+miqd_train_eval_pairs: 60000
+miqd_validation_pairs: 60000
+miqd_source_balanced: true
+miqd_source_mix_size: 8
+miqd_rows_per_source_turn: 2
+miqd_cache_dir: data/cache
+miqd_check_completeness: false
+save_validation_predictions: true
+# 当前 Huber-only 消融，其余辅助项关闭。
+huber_weight: 1.0
+rank_weight: 0.0
+nll_weight: 0.0
+decision_weight: 0.0
+task_refinement_enabled: false
